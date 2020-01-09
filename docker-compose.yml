@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  listifyapi:
+    image: ${DOCKER_REGISTRY-}listifyapi
+    build:
+      context: .
+      dockerfile: src/Dockerfile
