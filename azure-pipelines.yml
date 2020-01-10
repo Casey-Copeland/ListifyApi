@@ -17,6 +17,16 @@ stages:
       vmImage: 'ubuntu-latest'
     steps:
     - task: Docker@2
+      condition: eq(variables['Build.Reason'], 'PullRequest')
+      displayName: Build an image
+      inputs:
+        repository: 'ListifyApi'
+        command: 'build'
+        dockerfile: '**/Dockerfile'
+        tags: |
+          $(tag)
+    - task: Docker@2
+      condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
       displayName: Build an image
       inputs:
         containerRegistry: 'CopelandTech-Docker-Registry'
@@ -25,4 +35,4 @@ stages:
         dockerfile: '**/Dockerfile'
         tags: |
           $(tag)
-          dev
+          latest
