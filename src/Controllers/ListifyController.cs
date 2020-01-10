@@ -38,7 +38,7 @@ namespace ListifyApi.Controllers
 
             try
             {
-                var minValue = filter.MinValue ?? 0;
+                var minValue = filter.MinValue ?? 0 + id;
                 var maxValue = filter.MaxValue ?? minValue + id + 100;
 
                 var list = new Listify(minValue, maxValue);
@@ -55,7 +55,7 @@ namespace ListifyApi.Controllers
         {
             if ((!filter.MinValue.HasValue && !filter.MaxValue.HasValue) || (filter.MinValue.HasValue && filter.MaxValue.HasValue && filter.MaxValue > filter.MinValue))
             {
-                if (id.HasValue && (id.Value < 0 || (filter.MinValue.HasValue && filter.MaxValue.HasValue && id.Value > (filter.MaxValue - filter.MinValue))))
+                if (id.HasValue && ((filter.MinValue.HasValue && filter.MaxValue.HasValue && id.Value > (filter.MaxValue - filter.MinValue))))
                     return false;
                 else
                     return true;
