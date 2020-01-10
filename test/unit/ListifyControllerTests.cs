@@ -50,13 +50,14 @@ namespace ListifyApi.Tests
         [Theory]
         [InlineData(1, 0, 100, 200)]
         [InlineData(10, 10, 100, 200)]
-        [InlineData(9, 10, 100, 200)]
+        [InlineData(9, 10, 100, 400)]
         [InlineData(-9, 10, 100, 400)]
         [InlineData(120, 10, 100, 400)]
         [InlineData(10, null, 100, 400)]
         [InlineData(10, 10, null, 400)]
         [InlineData(10, null, null, 200)]
         [InlineData(0, null, null, 200)]
+        [InlineData(-25, null, null, 200)]
         public void GetReturnsValue(int index, int? minValue, int? maxValue, int expectedResponseCode)
         {
             //Given the following values
@@ -71,7 +72,7 @@ namespace ListifyApi.Tests
             Assert.Equal(expectedResponseCode, statusCode.StatusCode);
 
             if(statusCode.StatusCode == 200)
-                Assert.Equal(minValue.HasValue ? minValue + index : index, (int)responseObject.Value);
+                Assert.Equal(minValue.HasValue ? minValue.Value + Math.Abs(index) : index + Math.Abs(index), (int)responseObject.Value);
         }
     }
 }
