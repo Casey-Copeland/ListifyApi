@@ -5,7 +5,7 @@
     <DockerTargetOS>Linux</DockerTargetOS>
     <ProjectGuid>88e21538-0788-4bf9-968d-808b00d35c31</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/weatherforecast</DockerServiceUrl>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/listify</DockerServiceUrl>
     <DockerServiceName>listifyapi</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
