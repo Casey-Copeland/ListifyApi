@@ -55,7 +55,7 @@ namespace ListifyApi.Controllers
         {
             if ((!filter.MinValue.HasValue && !filter.MaxValue.HasValue) || (filter.MinValue.HasValue && filter.MaxValue.HasValue && filter.MaxValue > filter.MinValue))
             {
-                if (id.HasValue && (id.Value < 0 || (filter.MinValue.HasValue && filter.MaxValue.HasValue && id.Value > (filter.MaxValue - filter.MinValue))))
+                if (id.HasValue && ((filter.MinValue.HasValue && filter.MaxValue.HasValue && id.Value > (filter.MaxValue - filter.MinValue))))
                     return false;
                 else
                     return true;
