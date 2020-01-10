@@ -23,8 +23,8 @@ namespace ListifyApi.Entities
         public int this[int index] {
             get
             {
-                if (index >= 0 && index <= Count)
-                    return _minValue + index;
+                if (index >= _minValue && index <= Count)
+                    return _minValue + Math.Abs(index);
                 else
                     throw new IndexOutOfRangeException($"The index {index} is out of the available range: ({_minValue} - {_maxValue}).");
             }

@@ -38,7 +38,7 @@ namespace ListifyApi.Controllers
 
             try
             {
-                var minValue = filter.MinValue ?? 0;
+                var minValue = filter.MinValue ?? 0 + id;
                 var maxValue = filter.MaxValue ?? minValue + id + 100;
 
                 var list = new Listify(minValue, maxValue);
